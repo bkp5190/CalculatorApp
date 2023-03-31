@@ -6,41 +6,55 @@ public class Calculator {
       double num1, num2, result;
       char operator;
 
-      System.out.println("Enter first number:");
-      num1 = input.nextDouble();
+      while (true) {
+         System.out.println("Enter first number or 'q' to quit:");
+         String inputStr = input.next();
 
-      System.out.println("Enter second number:");
-      num2 = input.nextDouble();
-
-      System.out.println("Enter an operator (+, -, *, /, ^):");
-      operator = input.next().charAt(0);
-
-      switch(operator) {
-         case '+':
-            result = num1 + num2;
+         if (inputStr.equalsIgnoreCase("q")) {
+            System.out.println("Goodbye!");
             break;
+         }
 
-         case '-':
-            result = num1 - num2;
-            break;
+         num1 = Double.parseDouble(inputStr);
 
-         case '*':
-            result = num1 * num2;
-            break;
+         System.out.println("Enter second number:");
+         num2 = input.nextDouble();
 
-         case '/':
-            result = num1 / num2;
-            break;
+         System.out.println("Enter an operator (+, -, *, /, ^) or 'q' to quit:");
+         operator = input.next().charAt(0);
 
-         case '^':
-            result = Math.pow(num1, num2);
+         if (operator == 'q') {
+            System.out.println("Goodbye!");
             break;
-            
-         default:
-            System.out.println("Invalid operator");
-            return;
+         }
+
+         switch(operator) {
+            case '+':
+               result = num1 + num2;
+               break;
+
+            case '-':
+               result = num1 - num2;
+               break;
+
+            case '*':
+               result = num1 * num2;
+               break;
+
+            case '/':
+               result = num1 / num2;
+               break;
+
+            case '^':
+               result = Math.pow(num1, num2);
+               break;
+
+            default:
+               System.out.println("Invalid operator");
+               continue;
+         }
+
+         System.out.println(num1 + " " + operator + " " + num2 + " = " + result);
       }
-
-      System.out.println(num1 + " " + operator + " " + num2 + " = " + result);
    }
 }
